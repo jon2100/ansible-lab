@@ -49,6 +49,30 @@ From the Bastion, run the following as root or sudo
 - subscription-manager repos --enable ansible-automation-platform-(version-platform)-rpms
 - dnf install -y sudo dnf install --enablerepo=ansible-automation-platform-(version-platform)-rpms ansible-automation-platform-installer
 
+### Useful tools to have installed
+Bastion:
+- bind-utils (nslookup)
+- git (git utility)
+- net-utils (network tools)
+- vim
+- openldap-clients (ldapsearch)
+- tmux
+- bash-completion-noarch
+- wget
+- sos (for RH support)
+- yum-utils
+- telnet (port connection check)
+- httpd-utils (htpass)
+- mtr (network path troubleshooting)
+
+AAP Hosts:
+- bind-utils (nslookup)
+- vim
+- openldap-clients (ldapsearch)
+- bash-completion-noarch
+- sos (for RH support)
+- mtr (network path troubleshooting)
+
 ### Install AAP
 1. Edit the inventory file located /opt/ansible-automation-platform/installer/inventory sudo or root will be needed.
   - Add correct hosts under the following stanzas
