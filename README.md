@@ -115,7 +115,7 @@ Other values that can be set in the ldapexteras.yml
   - auth_ldap_group_search_filter= '(objectClass=Group)'
   - auth_ldap_group_type_class= 'django_auth_ldap.config:GroupOfNamesType'
 
-If the connection is to AD the folowing will need to be set for the values in the ldapextras.yml
+If the connection is to AD the following will need to be set for the values in the ldapextras.yml
   - AUTH_LDAP_USER_Search_FILTER: '(sAMAccountName=%(user)s)`
   - AUTH_LDAP_GROUP_TYPE_CLASS: 'django_auth_ldap.config:MemberDNGroupType'
   - AUTH_LDAP_GROUP_TYPE_PARAMS: {"member_attr": "member", "name_attr": "cn"}
