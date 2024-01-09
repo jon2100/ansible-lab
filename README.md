@@ -116,6 +116,7 @@ Other values that can be set in the ldapexteras.yml
   - auth_ldap_group_search_filter= '(objectClass=Group)'
   - auth_ldap_group_type_class= 'django_auth_ldap.config:GroupOfNamesType'
 
+
 If the connection is to AD the following will need to be set for the values in the ldapextras.yml
   - AUTH_LDAP_USER_Search_FILTER: '(sAMAccountName=%(user)s)`
   - AUTH_LDAP_GROUP_TYPE_CLASS: 'django_auth_ldap.config:MemberDNGroupType'
@@ -124,7 +125,10 @@ If the connection is to AD the following will need to be set for the values in t
 For Debug add this to the ldapextras.yml and rerun setup
  - GALAXY_LDAP_LOGGING: True
 
-  Example ldapextras.yml
+For Nested Groups
+- auth_ldap_group_search_filter = 'objectClass=memberOf:1.2.840.113556.1.4.1941)'
+
+### Example ldapextras.yml
 ```
 #ldapextras.yml
 ---
