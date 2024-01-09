@@ -121,18 +121,14 @@ If the connection is to AD the following will need to be set for the values in t
   - AUTH_LDAP_GROUP_TYPE_PARAMS: {"member_attr": "member", "name_attr": "cn"}
 
   Example ldapextras.yml
-  ```
-  #ldapextras.yml
----
-ldap_extra_settings:
-  AUTH_LDAP_USER_SEARCH_SCOPE: 'SUBTREE'
-  AUTH_LDAP_USER_SEARCH_FILTER: '(sAMAccountName=%(user)s)'
-  AUTH_LDAP_GROUP_SEARCH_SCOPE: 'SUBTREE'
-  AUTH_LDAP_GROUP_SEARCH_FILTER: '(objectClass=groupOfNames)'
-  AUTH_LDAP_GROUP_TYPE_CLASS: "django_auth_ldap.config:MemberDNGroupType"
-  AUTH_LDAP_GROUP_TYPE_PARAMS: {"member_attr": "member", "name_attr": "cn"}
-  AUTH_LDAP_USER_ATTR_MAP: {"first_name": "givenName", "last_name": "sn", "email": "mail"}
-  AUTH_LDAP_USER_FLAGS_BY_GROUP: {"is_superuser": "CN=myadmin,OU=MY-Groups,OU=Groups,DC=domain,DC=com",}
-  AUTH_LDAP_MIRROR_GROUPS: True
-  GALAXY_LDAP_LOGGING: True
-  ```
+Reference Links:
+- https://www.ansible.com/blog/getting-started-ldap-authentication-in-ansible-tower
+- https://access.redhat.com/solutions/3109871?band=se&seSessionId=01e1f7bd-d4a6-480f-920e-f26b1c082b38&seSource=Recommendation&seResourceOriginID=f4674dca-93d3-45cd-88be-7fc1a347d63d
+- https://access.redhat.com/solutions/6983916
+- https://access.redhat.com/solutions/6977153
+- https://docs.ansible.com/automation-controller/latest/html/administration/ldap_auth.html
+- https://django-auth-ldap.readthedocs.io/en/latest/example.
+- https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4
+- https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html/red_hat_ansible_automation_platform_installation_guide/assembly-platform-install-scenario#ref-ldap-config-on-pah_platform-install-scenario
+- https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html/automation_controller_administration_guide/controller-ldap-authentication
+html
