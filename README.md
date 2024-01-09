@@ -119,3 +119,20 @@ If the connection is to AD the following will need to be set for the values in t
   - AUTH_LDAP_USER_Search_FILTER: '(sAMAccountName=%(user)s)`
   - AUTH_LDAP_GROUP_TYPE_CLASS: 'django_auth_ldap.config:MemberDNGroupType'
   - AUTH_LDAP_GROUP_TYPE_PARAMS: {"member_attr": "member", "name_attr": "cn"}
+
+  Example ldapextras.yml
+  ```
+  #ldapextras.yml
+---
+ldap_extra_settings:
+  AUTH_LDAP_USER_SEARCH_SCOPE: 'SUBTREE'
+  AUTH_LDAP_USER_SEARCH_FILTER: '(sAMAccountName=%(user)s)'
+  AUTH_LDAP_GROUP_SEARCH_SCOPE: 'SUBTREE'
+  AUTH_LDAP_GROUP_SEARCH_FILTER: '(objectClass=groupOfNames)'
+  AUTH_LDAP_GROUP_TYPE_CLASS: "django_auth_ldap.config:MemberDNGroupType"
+  AUTH_LDAP_GROUP_TYPE_PARAMS: {"member_attr": "member", "name_attr": "cn"}
+  AUTH_LDAP_USER_ATTR_MAP: {"first_name": "givenName", "last_name": "sn", "email": "mail"}
+  AUTH_LDAP_USER_FLAGS_BY_GROUP: {"is_superuser": "CN=myadmin,OU=MY-Groups,OU=Groups,DC=domain,DC=com",}
+  AUTH_LDAP_MIRROR_GROUPS: True
+  GALAXY_LDAP_LOGGING: True
+  ```
