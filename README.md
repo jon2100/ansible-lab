@@ -87,7 +87,8 @@ AAP Hosts:
     - registry_password=''
 
     ** For the registry, this information is the user account able to pull packages from registry.redhat.io; for most, it will be the same account used to login to access.redhat.com.
-    ** Recommended not to store passwords in code repositories; follow the steps here: https://www.ansible.com/blog/securing-tower-installer-passwords
+    ** Recommended not to store passwords in code repositories; follow the steps here:
+    - https://www.ansible.com/blog/securing-tower-installer-passwords
 
 2. Run the installer
    - from /opt/ansible-automation-platform/installer
@@ -124,6 +125,21 @@ For Debug add this to the ldapextras.yml and rerun setup
  - GALAXY_LDAP_LOGGING: True
 
   Example ldapextras.yml
+```
+#ldapextras.yml
+---
+ldap_extra_settings:
+  AUTH_LDAP_USER_SEARCH_SCOPE: 'SUBTREE'
+  AUTH_LDAP_USER_SEARCH_FILTER: '(sAMAccountName=%(user)s)'
+  AUTH_LDAP_GROUP_SEARCH_SCOPE: 'SUBTREE'
+  AUTH_LDAP_GROUP_SEARCH_FILTER: '(objectClass=groupOfNames)'
+  AUTH_LDAP_GROUP_TYPE_CLASS: "django_auth_ldap.config:MemberDNGroupType"
+  AUTH_LDAP_GROUP_TYPE_PARAMS: {"member_attr": "member", "name_attr": "cn"}
+  AUTH_LDAP_USER_ATTR_MAP: {"first_name": "givenName", "last_name": "sn", "email": "mail"}
+  AUTH_LDAP_USER_FLAGS_BY_GROUP: {"is_superuser": "CN=myadmin,OU=ansibleGroups,OU=Groups,DC=domain,DC=.com",}
+  AUTH_LDAP_MIRROR_GROUPS: True
+  GALAXY_LDAP_LOGGING: True
+```
 Reference Links:
 - https://www.ansible.com/blog/getting-started-ldap-authentication-in-ansible-tower
 - https://access.redhat.com/solutions/3109871?band=se&seSessionId=01e1f7bd-d4a6-480f-920e-f26b1c082b38&seSource=Recommendation&seResourceOriginID=f4674dca-93d3-45cd-88be-7fc1a347d63d
