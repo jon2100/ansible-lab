@@ -1,0 +1,14 @@
+#ldapextras.yml
+---
+ldap_extra_settings:
+  AUTH_LDAP_USER_SEARCH_SCOPE: 'SUBTREE'
+  AUTH_LDAP_USER_SEARCH_FILTER: '(sAMAccountName=%(user)s)'
+  AUTH_LDAP_GROUP_SEARCH_SCOPE: 'SUBTREE'
+  AUTH_LDAP_GROUP_SEARCH_FILTER: '(objectClass=memberOf:1.2.840.113556.1.4.1941)'
+  AUTH_LDAP_GROUP_TYPE_CLASS: "django_auth_ldap.config:MemberDNGroupType"
+  AUTH_LDAP_GROUP_TYPE_PARAMS: {"member_attr": "member", "name_attr": "cn"}
+  AUTH_LDAP_USER_ATTR_MAP: {"first_name": "givenName", "last_name": "sn", "email": "mail"}
+  AUTH_LDAP_USER_FLAGS_BY_GROUP: {"is_superuser": "CN=ansibleadmin,OU=ansible-Groups,OU=Groups,DC=domain,DC=com",}
+  AUTH_LDAP_MIRROR_GROUPS: True
+  GALAXY_LDAP_LOGGING: True
+...

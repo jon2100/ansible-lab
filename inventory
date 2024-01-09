@@ -9,7 +9,7 @@
 # hybrid.example  node_type=hybrid
 # hybrid2.example <- this will default to hybrid
 [automationcontroller]
-ctrlaap.domain.lan 
+controller.domain.com 
 
 [automationcontroller:vars]
 peers=execution_nodes
@@ -25,32 +25,32 @@ peers=execution_nodes
 # execution.example  node_type=execution
 # execution2.example <- this will default to execution
 [execution_nodes]
-eeaap.domain.lan
+executionenv.domain.com
 
 [automationhub]
-aaphub.domain.lan
+hub.domain.com
 
 [automationedacontroller]
 
 [database]
-pdbaap.domain.lan 
+posgresql.domain.com 
 
 # Single Sign-On
-# If sso_redirect_host is set, that will be used for the application to connect to
+# If sso_redirect_host is set, that will be used for application to connect to
 # SSO for authentication. This must be reachable from client machines.
 #
 # ssohost.example sso_redirect_host=<host/ip>
 [sso]
 
 [all:vars]
-admin_password='password
+admin_password='password1'
 
-pg_host='pdbaap.domain.lan'
+pg_host='postgresql.domain.com'
 pg_port=5432
 
 pg_database='awx'
 pg_username='awx'
-pg_password='password'
+pg_password='password2'
 pg_sslmode='prefer'  # set to 'verify-full' for client-side enforced SSL
 
 # Managed Postgres Options
@@ -77,7 +77,7 @@ pg_sslmode='prefer'  # set to 'verify-full' for client-side enforced SSL
 #   installer is used.
 
 registry_url='registry.redhat.io'
-registry_username='account'
+registry_username='rh-login-user'
 registry_password='password'
 # ee_from_hub_only =
 
@@ -93,14 +93,14 @@ receptor_listener_port=27199
 # Automation Hub Configuration
 #
 
-automationhub_admin_password='password'
+automationhub_admin_password='password1'
 
-automationhub_pg_host='pdbaap.domain.lan'
+automationhub_pg_host='postgresql.domain.com'
 automationhub_pg_port=5432
 
 automationhub_pg_database='automationhub'
 automationhub_pg_username='automationhub'
-automationhub_pg_password='password'
+automationhub_pg_password='password2'
 automationhub_pg_sslmode='prefer'
 
 # Set to True to overwrite existing admin password.
@@ -175,13 +175,13 @@ automationhub_pg_sslmode='prefer'
 # https://django-auth-ldap.readthedocs.io/en/latest/reference.html#settings
 # Extra parameters will need to be passed through an ansible ldap_extra_settings dictionary.
 #
-# automationhub_authentication_backend = "ldap"
+automationhub_authentication_backend = "ldap"
 #
-# automationhub_ldap_server_uri = "ldap://ldap:10389"
-# automationhub_ldap_bind_dn = "cn=admin,dc=ansible,dc=com"
-# automationhub_ldap_bind_password = "GoodNewsEveryone"
-# automationhub_ldap_user_search_base_dn = "ou=people,dc=ansible,dc=com"
-# automationhub_ldap_group_search_base_dn = "ou=people,dc=ansible,dc=com"
+automationhub_ldap_server_uri = "ldap://adserver.domain.com:389"
+automationhub_ldap_bind_dn = "CN=aapacct,OU=service_accounts,OU=Groups,DC=domain,DC=com"
+automationhub_ldap_bind_password = "bindpassword"
+automationhub_ldap_user_search_base_dn = "DC=domain,DC=com"
+automationhub_ldap_group_search_base_dn = "OU=ansible-Groups,OU=Groups,DC=domain,DC=com"
 
 # By default, bundle installer seeds certified and validated collections into
 # Automation Hub. Set to False to disable the seeding.
