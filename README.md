@@ -92,5 +92,30 @@ AAP Hosts:
 2. Run the installer
    - from /opt/ansible-automation-platform/installer
      - sudo./setup.sh -e ansible-user=root
+    ** if needing to add ldap options
+     - sudo /setup.sh -e ansible-user=root -e @ldapextras.yml
      or
      - as root ./setup.sh
+    ** if needing to add ldap options
+     - as root ./setup.sh -e @ldapextras.yml
+
+### If setting up LDAP on the HUB
+Things to note the following must be set in the inventory file
+   - 1automationhub_authentication_backend
+   - automationhub_ldap_server_uri
+   - automationhub_ldap_bind_dn
+   - automationhub_ldap_bind_password
+   - automationhub_ldap_user_search_base_dn
+   - automationhub_ldap_group_search_base_dn
+
+Other values that can be set in the ldapexteras.yml
+  - auth_ldap_user_search_scope= 'SUBTREE'
+  - auth_ldap_user_search_filter= '(uid=%(user)s)`\'
+  - auth_ldap_group_search_scope= 'SUBTREE'
+  - auth_ldap_group_search_filter= '(objectClass=Group)'
+  - auth_ldap_group_type_class= 'django_auth_ldap.config:GroupOfNamesType'
+
+If the connection is to AD the folowing will need to be set for the values in the ldapextras.yml
+  - AUTH_LDAP_USER_Search_FILTER: '(sAMAccountName=%(user)s)`
+  - AUTH_LDAP_GROUP_TYPE_CLASS: 'django_auth_ldap.config:MemberDNGroupType'
+  - AUTH_LDAP_GROUP_TYPE_PARAMS: {"member_attr": "member", "name_attr": "cn"}
