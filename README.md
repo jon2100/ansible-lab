@@ -155,3 +155,10 @@ Reference Links:
 - https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4
 - https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html/red_hat_ansible_automation_platform_installation_guide/assembly-platform-install-scenario#ref-ldap-config-on-pah_platform-install-scenario
 - https://access.redhat.com/documentation/en-us/red_hat_ansible_automation_platform/2.4/html/automation_controller_administration_guide/controller-ldap-authentication.html
+
+### Enable TLS
+This lab has a self-signed AD cert so it will need to be imported into both the hub and controller hosts. If it's a default RHEL 8 build, then the cert can go to ```/etc/pki/ca-trust/source/anchor/ad-crt.cer ```
+
+Then change the setting for ```automationhub_ldap_server_uri``` need to be set to ```ldaps``` and ```636``` for the port (change the port if it's not default) and rerun setup
+
+You can set this value ```# custom_ca_cert=/path/to/ca.crt``` and the cert will be imported automatically.
