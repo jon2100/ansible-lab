@@ -128,7 +128,7 @@ For Debug add this to the ldapextras.yml and rerun setup
 For Nested Groups
 - auth_ldap_group_search_filter = 'objectClass=memberOf:1.2.840.113556.1.4.1941)'
 
-### Example ldapextras.yml
+### Example: ldapextras.yml
 ```
 #ldapextras.yml
 ---
