@@ -135,6 +135,10 @@ Then change the setting for ```automationhub_ldap_server_uri``` need to be set t
 
 You can set this value ```# custom_ca_cert=/path/to/ca.crt``` and the cert will be imported automatically.
 
+To check if the CA is part of the trust
+Login to the hub and run the following command.
+``` #trust list --filter=ca-anchors | grep <domain being checked> -i -A 2 -B 3 ```
+
 ### Example: ldapextras.yml
 ```
 #ldapextras.yml
